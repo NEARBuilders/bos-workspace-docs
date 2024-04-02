@@ -24,12 +24,29 @@ bos-workspace -V
 ```
 ![Verify `bos-workspace` version](verify_bosworkspace_version.png)
 
-### Usage
 To start, you may clone an existing project by navigating to your project directory and running the `clone` command:
 ```js
 bos-workspace clone [accountId]
 ```
 where `accountId ` is your named NEAR account (yourname.near)
 
-To build a workspace from scratch 
+![Cloned BOS components](cloned_components.png)
+
+In the terminal, navigate to the account name workspace, then run `bos-workspace-dev` to start the development server. 
+
+The image below is an example of what your terminal and browser should look like once you've opened the local gateway.
+
+![Development server running](dev_server_running.png)
+
+### Usage
+
+You can use your `bos-workspace` for both single and multi app development by taking advantage of the relationship between `Apps` and `Workspaces`
+
+**App:** belongs to an Account, described by a `bos.config.json` 
+
+*Sample directory structure*
+
+![App folder structure](app_structure.png)
+
+**Workspace**
 ### Commands
