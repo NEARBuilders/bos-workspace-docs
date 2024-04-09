@@ -42,11 +42,22 @@ The image below is an example of what your terminal and browser should look like
 
 You can use your `bos-workspace` for both single and multi app development by taking advantage of the relationship between `Apps` and `Workspaces`
 
-**App:** belongs to an Account, described by a `bos.config.json` 
+**App:** 
+- belongs to an Account
+- described by a `bos.config.json` where the content is:
+```
+{
+    "account": "app.near"
+}
+```
+
+- path to code: `{projectId}/widget/*`
+- cloning: `bos-workspace clone {accountId}` to create an App with `bos.config.json` set up and pull in all of the widgets from that `accountId`
 
 *Sample directory structure*
 
 ![App folder structure](app_structure.png)
 
 **Workspace**
+- able to run multiple Apps at the same time (similar to a monrepo) 
 ### Commands
