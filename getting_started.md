@@ -76,3 +76,44 @@ You can use your `bos-workspace` for both single and multi app development by ta
 
 To see the list of commands, run `bw` or `bos-workspace`
 
+Usage: `bos-workspace [options] [command]`
+
+Build decentralized apps
+
+Options: <br>
+`-V`, --version<br>
+`-h`, --help
+
+Commands:
+<details>
+<summary><code>dev [options] [src]</code> Run the development server</summary>
+<br>
+Usage: <code>bos-workspace dev [options] [src]</code><br><br>
+
+Arguments: <br>
+<code>src</code>: Path to the app source code (default: ".")
+<br><br>
+Options:<br>
+<code>-p, --port `<port>` </code> Port to run the server on (default: "8080")<br>
+<code>-g, --gateway `<gateway>`</code> Path to custom gateway dist<br>
+<code>--no-gateway</code> Disable the gateway<br>
+<code>--no-hot</code> Disable hot reloading<br>
+<code>--no-open</code> Disable opening the browser<br>
+<code>-h, --help</code>Display help for command<br>
+</details>
+<br>
+<details>
+<summary><code>build [options] [src] [dest]</code> Build the project</summary>
+<br>
+Usage: <code>bos-workspace build [options] [src] [dest]</code><br><br>
+
+Arguments: <br>
+<code>src</code>: Path to the app source code (default: ".")
+<code>dest</code>: Destination path
+<br><br>
+Options:<br>
+<code>-n, --network `<network>` </code>Network<br>
+<code>-l, --loglevel `<loglevel>`</code>log level (ERROR, WARN, INFO, DEV, BUILD, DEBUG) (default: "BUILD")
+<br>
+<code>-h, --help</code>Display help for command<br>
+</details>
