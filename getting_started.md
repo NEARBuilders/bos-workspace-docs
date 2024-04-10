@@ -22,7 +22,8 @@ To verify `bos-workspace` in installed, you can check for a current version:
 ```js
 bos-workspace -V
 ```
-![Verify `bos-workspace` version](verify_bosworkspace_version.png)
+
+<img src="verify_bosworkspace_version.png" alt="Verify `bos-workspace` version" width="100%">
 
 To start, you may clone an existing project by navigating to your project directory and running the `clone` command:
 ```js
@@ -30,13 +31,13 @@ bos-workspace clone [accountId]
 ```
 where `accountId ` is your named NEAR account (yourname.near)
 
-![Cloned BOS components](cloned_components.png)
+<img src="cloned_components.png" alt="Cloned BOS components" width="90%">
 
 In the terminal, navigate to the account name workspace, then run `bos-workspace-dev` to start the development server. 
 
 The image below is an example of what your terminal and browser should look like once you've opened the local gateway.
 
-![Development server running](dev_server_running.png)
+<img src="dev_server_running.png" alt="Development server running" width="90%">
 
 ### Usage
 
@@ -56,7 +57,7 @@ You can use your `bos-workspace` for both single and multi app development by ta
 
 *Sample directory structure*
 
-![App folder structure](sample_app_structure.png)
+<img src="sample_app_structure.png" alt="sample app structure" width="75%">
 
 **Workspace**
 - able to hold multiple Apps at the same time (similar to a monrepo) 
@@ -68,7 +69,7 @@ You can use your `bos-workspace` for both single and multi app development by ta
 ```
 *Sample directory structure*
 
-![Workspace folder structure](sample_workspace_structure.png)
+<img src="sample_workspace_structure.png" width="75%">
 
 *Note: App names are not required to end in `.near` or be stored in a directory named `/apps`. Be sure your `bos.config.json` is located at the same level as directories like `/widget` and your `bos.workspace.json` reflects the name of the directory where your apps are located*
 
