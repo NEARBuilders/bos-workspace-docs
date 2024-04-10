@@ -1,0 +1,15 @@
+{
+  "account": "docs.bos-workspace.near",
+  "aliases": ["./aliases.mainnet.json"],
+  "ipfs": {
+    "gateway": "https://ipfs.near.social/ipfs",
+    "uploadApi": "https://ipfs.near.social/add",
+    "uploadApiHeaders": {}
+  },
+  "overrides": {
+    "testnet": {
+      "account": "docs.bos-workspace.testnet",
+      "aliases": ["./aliases.testnet.json"]
+    }
+  }
+}
