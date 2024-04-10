@@ -35,19 +35,10 @@ if (!config) {
 console.log("config", config);
 
 if (!config) {
-  return (
-    <p>
-      unable to load config:{" "}
-      {typeof config === object ? JSON.stringify(config) : config}
-    </p>
-  );
+  return <p>unable to load config: {typeof config === object ? JSON.stringify(config) : config}</p>;
 }
 
-const Layout = VM.require(
-  config.layout?.src ?? "${alias_devs}/widget/Layout"
-) || {
-  Layout: () => <></>,
-};
+const Layout = VM.require(config.layout?.src ?? "${alias_devs}/widget/Layout") || (() => <></>);
 
 // While something like Theme should be in the parent...
 const CSS = styled.div`
@@ -91,10 +82,7 @@ const Content = styled.div`
 return (
   <CSS style={config.theme}>
     <Container className="window">
-      <Layout
-        {...(config.layout?.props ?? { variant: "standard" })}
-        blocks={config.blocks}
-      >
+      <Layout {...(config.layout?.props ?? { variant: "standard" })} blocks={config.blocks}>
         <Content>
           <Router config={config.router} {...passProps} />
         </Content>
