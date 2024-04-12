@@ -1,3 +1,4 @@
+# Configure Testnet
 
 1. upgrade to bos-workspace v1, [MIGRATION_GUIDE](?page=migration_guide.md)
 2. create testnet override + aliases in bos.config.json
