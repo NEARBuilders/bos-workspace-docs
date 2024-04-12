@@ -1,6 +1,35 @@
-const { normalize } = VM.require("${alias_devs}/widget/lib.stringUtils") || {
-  normalize: (str) => str,
+// const { normalize } = VM.require("${alias_devs}/widget/lib.stringUtils") || {
+//   normalize: (str) => str,
+// };
+
+/**
+ * Transform input into a consistent and standardized format
+ *
+ * @param {string} text - The input to normalize.
+ * @param {string} delimiter - The delimiter to use between words.
+ * @returns {string} - normalized input
+ */
+
+const normalize = (text, delimiter) => {
+  // If no delimiter is provided, default to an underscore
+  delimiter = delimiter || "-";
+
+  return (
+    text
+      // Convert to lowercase
+      .toLowerCase()
+      // Replace spaces with dashes
+      .replace(/\s+/g, delimiter)
+      // Replace any non-alphanumeric characters (excluding dashes) with nothing
+      .replace(`/[^a-z0-9${delimiter}]/g`, "")
+      // Replace multiple consecutive dashes with a single dash
+      .replace(`/${delimiter}+/g`, "-")
+      // Trim dashes from the start and end of the string
+      .replace(`/^${delimiter}+|${delimiter}+$/g`, "")
+  );
 };
+
+
 
 const data = {
   "": JSON.stringify({
@@ -8,24 +37,12 @@ const data = {
     sections: [
       {
         title: "Getting Started",
-        content: `
-        ## Quickstart
-
-        To begin, either [use this template repository](https://github.com/new?template_name=quickstart&template_owner=NEARBuilders) or install \`bos-workspace\` within an existing project:
-        
-        \`\`\`cmd
-        yarn add -D bos-workspace
-        \`\`\`
-        
-        Then, you can clone widgets from an existing [account](https://near.social/mob.near/widget/Everyone) via:
-        
-        \`\`\`bash
-        bos-workspace clone [accountId]
-        \`\`\`
-        
-        Or ensure the proper workspace [structure and usage](#usage).
-        `,
+        content: "",
         subsections: [
+          {
+            title: "Migration Guide",
+            content: "# Instructions for installing the software.",
+          },
           {
             title: "Installation",
             content: "# Instructions for installing the software.",
@@ -47,6 +64,10 @@ const data = {
           {
             title: "Advanced Usage",
             content: "Instructions for advanced usage.",
+          },
+          {
+            title: "Configure Testnet",
+            content: "# Instructions for installing the software.",
           },
         ],
       },
@@ -81,11 +102,11 @@ const contentMap = {};
 
 // Iterate over sections and subsections to populate content map
 documentation.sections.forEach((section) => {
-  const sectionPath = normalize(section.title);
+  const sectionPath = normalize(section.title, "_");
   contentMap[sectionPath] = { title: section.title, content: section.content };
 
   section.subsections.forEach((subsection) => {
-    const subsectionPath = `${sectionPath}/${normalize(subsection.title)}`;
+    const subsectionPath = `${sectionPath}/${normalize(subsection.title, "_")}`;
     contentMap[subsectionPath] = {
       title: subsection.title,
       content: subsection.content,

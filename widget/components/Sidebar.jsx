@@ -27,7 +27,7 @@ return (
       <div key={parentSection}>
         {/* Render parent section */}
         <div className="parent-section">
-          <Link to={`/${basePath}?${param}=${parentSection}`}>
+          <Link to={`/${basePath}?${param}=${parentSection}.md`}>
             <button className="button">{documents[parentSection].title}</button>
           </Link>
         </div>
@@ -36,7 +36,7 @@ return (
         <div className="nested-section">
           {groupedSections[parentSection].map((childSection) => (
             <div className="child-section" key={childSection}>
-              <Link to={`/${basePath}?${param}=${parentSection}/${childSection}`}>
+              <Link to={`/${basePath}?${param}=${parentSection}/${childSection}.md`}>
                 <button className="button">{documents[`${parentSection}/${childSection}`].title}</button>
               </Link>
             </div>
