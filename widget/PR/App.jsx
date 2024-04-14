@@ -1,6 +1,4 @@
-const { Router } = VM.require("${config_account}/widget/PR.Router") || {
-  Router: () => <></>,
-};
+const { Router } = VM.require("${config_account}/widget/PR.Router");
 
 const { config, ...passProps } = props;
 

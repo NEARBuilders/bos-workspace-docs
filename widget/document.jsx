@@ -10,13 +10,17 @@ const { get } = VM.require(adapter);
 
 const data = get(_params);
 
-if (!data) { // this could be a part of the template
+if (!data) {
+  // this could be a part of the template
   return <p>Page not found</p>;
 }
 
 return (
-  <Template theme={{ "--main-bg-color": "green" }}>
-    <div style={{ backgroundColor: "var(--main-bg-color)" }}>
+  <Template theme={{ "--main-bg-color": "white" }} style={{}}>
+    <div
+      style={{ backgroundColor: "var(--main-bg-color)", width: "100%", height: "100%" }}
+      className="content"
+    >
       <MarkdownViewer value={data} />
     </div>
   </Template>

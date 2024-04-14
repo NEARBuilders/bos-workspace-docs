@@ -1,4 +1,3 @@
 # Template
 
 // Embed widget source
-
