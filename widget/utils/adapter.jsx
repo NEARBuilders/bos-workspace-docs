@@ -29,7 +29,7 @@ const normalize = (text, delimiter) => {
   );
 };
 
-
+let github = VM.require("${config_account}/widget/PR.adapter.github");
 
 const data = {
   "": JSON.stringify({
@@ -115,14 +115,22 @@ documentation.sections.forEach((section) => {
 });
 
 return {
-  get: (path) => {
-    if (path) {
-      return contentMap[path];
-    } else {
-      return contentMap;
+  get: (params) => {
+    if (params) {
+      let path = params.path;
+
+      let parts = path.split("/");
+
+      if (parts.length === 1) {
+        path = parts[0].replace(".md", "") + "/" + "index.md";
+      }
+
+      return github.get(path);
     }
+
+    return contentMap; // index
   },
   create: (k, v) => {
     console.log("create");
-  }
+  },
 };
