@@ -21,7 +21,7 @@ const config = {
   },
   layout: {
     src: "${alias_devs}/widget/Layout",
-    props: {
+    initialProps: {
       variant: "sidebar",
     },
   },
@@ -79,7 +79,7 @@ const config = {
   },
 };
 
-const Root = styled.div`
+const CSS = styled.div`
   * {
     box-sizing: border-box;
     font-weight: 400;
@@ -221,10 +221,10 @@ const Root = styled.div`
 `;
 
 return (
-  <Root>
+  <CSS>
     <Widget
       src="${config_account}/widget/PR.App"
       props={{ config, ...props }}
     />
-  </Root>
+  </CSS>
 );
