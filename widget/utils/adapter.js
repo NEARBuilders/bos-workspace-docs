@@ -88,16 +88,12 @@ const data = {
       {
         title: "Blocks",
         content: {
-          
+
         },
         subsections: [
           {
-            title: "",
+            title: "Template",
             content: "Description and usage of Example 1.",
-          },
-          {
-            title: "Example 2",
-            content: "Description and usage of Example 2.",
           },
         ],
       },
