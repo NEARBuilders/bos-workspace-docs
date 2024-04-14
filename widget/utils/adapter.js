@@ -85,6 +85,22 @@ const data = {
           },
         ],
       },
+      {
+        title: "Blocks",
+        content: {
+          
+        },
+        subsections: [
+          {
+            title: "",
+            content: "Description and usage of Example 1.",
+          },
+          {
+            title: "Example 2",
+            content: "Description and usage of Example 2.",
+          },
+        ],
+      },
     ],
   }),
   metadata: {
@@ -122,10 +138,11 @@ return {
       let parts = path.split("/");
 
       if (parts.length === 1) {
-        path = parts[0].replace(".md", "") + "/" + "index.md";
+        parts.push("index");
+        path = parts.join("/");
       }
 
-      return github.get(path);
+      return github.get(path + ".md");
     }
 
     return contentMap; // index
