@@ -13,11 +13,10 @@
 
 const config = {
   theme: {
-    // add key values to define colors
-    // "--main-color": "blue",
-    // "--secondary-color": "red",
-    // background: "var(--main-color)",
-    // color: "var(--secondary-color)",
+    "--main-color": "white",
+    "--secondary-color": "black",
+    background: "var(--main-color)",
+    color: "var(--secondary-color)",
   },
   layout: {
     src: "${alias_devs}/widget/Layout",
@@ -222,9 +221,6 @@ const CSS = styled.div`
 
 return (
   <CSS>
-    <Widget
-      src="${config_account}/widget/PR.App"
-      props={{ config, ...props }}
-    />
+    <Widget src="${config_account}/widget/PR.App" props={{ config, ...props }} />
   </CSS>
 );

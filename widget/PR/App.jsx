@@ -38,7 +38,7 @@ const Template = VM.require("${config_account}/widget/PR.Template");
 
 return (
   <Template
-    theme={{}}
+    theme={config.theme}
     layout={{
       ...(config.layout ?? {
         src: "${alias_devs}/widget/Layout",
