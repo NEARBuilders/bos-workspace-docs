@@ -1,6 +1,6 @@
 const { basePath, param, _params } = props;
 
-let adapter = "${config_account}/widget/utils.adapter"; // this could come from props
+let adapter = "${config_account}/widget/utils.db"; // this could come from props
 
 const Template = VM.require("${config_account}/widget/PR.Template");
 
