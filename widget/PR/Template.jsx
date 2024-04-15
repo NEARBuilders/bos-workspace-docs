@@ -10,7 +10,7 @@ const Content = styled.div`
 
 return ({ layout, theme, blocks, children }) => {
   
-  const Layout = VM.require(layout?.src ?? "${alias_devs}/widget/Layout") || {
+  const { Layout } = VM.require(layout?.src ?? "${alias_devs}/widget/Layout") || {
     Layout: () => <></>,
   };
 

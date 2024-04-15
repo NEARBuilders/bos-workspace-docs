@@ -1,4 +1,5 @@
 /**
+ * This is the index
  * We can get some data from the project itself
  * metadata, name, description, tags, etc.
  * We want the document paths... We want to be able to add or remove them...
