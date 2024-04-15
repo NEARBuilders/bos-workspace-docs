@@ -27,7 +27,6 @@ const Button = styled.button`
 `;
 
 const BosWorkspaceInfo = styled.p`
-  text-align: center;
   font-size: 1.1rem;
   color: #444;
   margin: 2rem;

@@ -58,16 +58,12 @@ const data = {
         content: "Hello 2",
         subsections: [
           {
-            title: "Basic Usage",
+            title: "Aliases",
             content: "Instructions for basic usage.",
           },
           {
-            title: "Advanced Usage",
+            title: "Deploy",
             content: "Instructions for advanced usage.",
-          },
-          {
-            title: "Configure Testnet",
-            content: "# Instructions for installing the software.",
           },
         ],
       },

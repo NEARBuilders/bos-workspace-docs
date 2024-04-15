@@ -63,6 +63,13 @@ const config = {
         },
       },
       {
+        path: "/edit/:path*",
+        element: {
+          src: "${config_account}/widget/edit",
+          initialProps: {},
+        },
+      },
+      {
         path: "/settings",
         element: {
           src: "${config_account}/widget/settings",
