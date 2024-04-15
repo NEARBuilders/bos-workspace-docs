@@ -1,6 +1,6 @@
 const USERNAME = "nearbuilders"; // this could come from bos-workspace aliases...
 const REPOSITORY = "bos-workspace-docs";
-const BRANCH = "develop";
+const BRANCH = "main";
 const GITHUB_TOKEN = "YOUR_GITHUB_TOKEN";
 const PATH_PREFIX = "md";
 
