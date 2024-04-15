@@ -17,7 +17,8 @@ return (
       </Link> */}
     </div>
     <div className="end">
-      {context.accountId === `${config_account}` && (
+      {/* {context.accountId === `${config_account}` && ( */}
+      {true && (
         <>
           {/* <Link
             to={

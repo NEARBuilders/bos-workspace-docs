@@ -164,7 +164,7 @@ const CSS = styled.div`
     border-top: 2px solid #ededed;
     border-right: 2px solid #404040;
     border-bottom: 2px solid #404040;
-    background: navy;
+    background: black;
 
     display: flex;
     justify-content: space-between;
