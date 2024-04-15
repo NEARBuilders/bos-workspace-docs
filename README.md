@@ -1,5 +1,7 @@
 # bos-workspace-docs
 
+This repository holds the bos-workspace docs and a customizable documentation site.
+
 ## Getting started
 
 1. Install packages
