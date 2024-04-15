@@ -1,6 +1,6 @@
 const { basePath, param } = props;
 
-const { get } = VM.require("${config_account}/widget/utils.adapter");
+const { get } = VM.require("${config_account}/widget/utils.db");
 
 const documents = get();
 

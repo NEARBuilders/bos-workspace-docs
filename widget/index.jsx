@@ -1,4 +1,5 @@
 /**
+ * This is the index
  * We can get some data from the project itself
  * metadata, name, description, tags, etc.
  * We want the document paths... We want to be able to add or remove them...
@@ -13,15 +14,14 @@
 
 const config = {
   theme: {
-    // add key values to define colors
-    // "--main-color": "blue",
-    // "--secondary-color": "red",
-    // background: "var(--main-color)",
-    // color: "var(--secondary-color)",
+    "--main-color": "white",
+    "--secondary-color": "black",
+    background: "var(--main-color)",
+    color: "var(--secondary-color)",
   },
   layout: {
     src: "${alias_devs}/widget/Layout",
-    props: {
+    initialProps: {
       variant: "sidebar",
     },
   },
@@ -79,7 +79,7 @@ const config = {
   },
 };
 
-const Root = styled.div`
+const CSS = styled.div`
   * {
     box-sizing: border-box;
     font-weight: 400;
@@ -164,7 +164,7 @@ const Root = styled.div`
     border-top: 2px solid #ededed;
     border-right: 2px solid #404040;
     border-bottom: 2px solid #404040;
-    background: navy;
+    background: black;
 
     display: flex;
     justify-content: space-between;
@@ -221,10 +221,7 @@ const Root = styled.div`
 `;
 
 return (
-  <Root>
-    <Widget
-      src="${config_account}/widget/PR.App"
-      props={{ config, ...props }}
-    />
-  </Root>
+  <CSS>
+    <Widget src="${config_account}/widget/PR.App" props={{ config, ...props }} />
+  </CSS>
 );

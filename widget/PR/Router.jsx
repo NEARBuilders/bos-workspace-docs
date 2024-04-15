@@ -34,10 +34,7 @@ function Router({ config, ...passProps }) {
       return path.startsWith(":") || path.startsWith("*");
     });
     if (dynamicPathRoute) {
-      const key = dynamicPathRoute.path
-        .substring(1)
-        .replace("*", "")
-        .replace(":", "");
+      const key = dynamicPathRoute.path.substring(1).replace("*", "").replace(":", "");
       activeRoute = dynamicPathRoute;
       params = { _params: { [key]: passProps[param] || "" } };
     } else {
