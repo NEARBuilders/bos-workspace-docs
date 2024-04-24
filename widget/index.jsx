@@ -86,10 +86,17 @@ const config = {
   },
 };
 
+const InterCSS = fetch(
+  `https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet`
+).body;
+
 const CSS = styled.div`
+  ${InterCSS}
+
   * {
     box-sizing: border-box;
     font-weight: 400;
+    font-family: Inter, sans-serif;
   }
 
   .window {
