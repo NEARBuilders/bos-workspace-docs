@@ -6,14 +6,19 @@ const Template = VM.require("${config_account}/widget/PR.Template");
 
 const { get } = VM.require(adapter);
 
-const data = get(_params);
+const data = get(_params); //
 
 if (!data) {
   // this could be a part of the template
   return <p>Page not found</p>;
 }
 
-const { MarkdownViewer } = VM.require("${alias_devs}/widget/markdown.view");
+// hyperfiles.near/widget/view
+// adapter
+// source
+// type
+
+const { MarkdownViewer } = VM.require("${config_account}/widget/markdown.view");
 
 return (
   <Template theme={{ "--main-bg-color": "white" }} style={{}}>

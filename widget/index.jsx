@@ -53,19 +53,12 @@ const config = {
     ),
   },
   router: {
-    param: "page",
+    param: "page", 
     routes: [
       {
         path: "/",
         element: {
           src: "${config_account}/widget/home",
-          initialProps: {},
-        },
-      },
-      {
-        path: "/edit/:path*",
-        element: {
-          src: "${config_account}/widget/edit",
           initialProps: {},
         },
       },
@@ -76,6 +69,13 @@ const config = {
           initialProps: {},
         },
       },
+      // {
+      //   path: "/edit/:path*",
+      //   element: {
+      //     src: "${config_account}/widget/edit",
+      //     initialProps: {},
+      //   },
+      // },
       {
         path: "/:path*",
         element: {

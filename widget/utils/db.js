@@ -29,67 +29,119 @@ const normalize = (text, delimiter) => {
   );
 };
 
-let github = VM.require("${config_account}/widget/PR.adapter.github");
+const githubAdapter = "${config_account}/widget/PR.adapter.github";
+let adapter = VM.require(githubAdapter);
 
 const data = {
   "": JSON.stringify({
     title: "My Documentation",
     sections: [
       {
-        title: "Getting Started",
-        content: "",
+        title: "Getting Started", // getting_started/index.md
+        content: {
+          reference: {
+            // _params
+            path: "getting_started/index.md",
+          },
+          adapter: "${config_account}/widget/PR.adapter.github",
+        },
         subsections: [
           {
-            title: "Migration Guide",
-            content: "# Instructions for installing the software.",
-          },
-          {
             title: "Installation",
-            content: "# Instructions for installing the software.",
+            content: {
+              reference: {
+                // _params
+                path: "getting_started/installation.md",
+              },
+              adapter: "${config_account}/widget/PR.adapter.github",
+            },
           },
           {
-            title: "Setup",
-            content: "Guidelines for setting up the environment.",
+            title: "Migration Guide",
+            content: {
+              reference: {
+                // _params
+                path: "getting_started/migration_guide.md",
+              },
+              adapter: "${config_account}/widget/PR.adapter.github",
+            },
           },
         ],
       },
       {
         title: "Usage",
-        content: "Hello 2",
+        content: {
+          reference: {
+            // _params
+            path: "usage/index.md",
+          },
+          adapter: "${config_account}/widget/PR.adapter.github",
+        },
         subsections: [
           {
             title: "Aliases",
-            content: "Instructions for basic usage.",
+            content: {
+              reference: {
+                // _params
+                path: "usage/aliases.md",
+              },
+              adapter: "${config_account}/widget/PR.adapter.github",
+            },
           },
           {
             title: "Deploy",
-            content: "Instructions for advanced usage.",
-          },
-        ],
-      },
-      {
-        title: "Examples",
-        content: "Hello 3",
-        subsections: [
-          {
-            title: "Example 1",
-            content: "Description and usage of Example 1.",
-          },
-          {
-            title: "Example 2",
-            content: "Description and usage of Example 2.",
+            content: {
+              reference: {
+                // _params
+                path: "usage/deploy.md",
+              },
+              adapter: "${config_account}/widget/PR.adapter.github",
+            },
           },
         ],
       },
       {
         title: "Blocks",
         content: {
-
+          reference: {
+            // _params
+            path: "blocks/index.md",
+          },
+          adapter: "${config_account}/widget/PR.adapter.github",
         },
         subsections: [
           {
+            title: "Layout",
+            content: {
+              reference: {
+                // _params
+                path: "devs.near/widget/Layout.demo",
+              },
+              adapter: "${config_account}/widget/PR.adapter.socialdb",
+            },
+          },
+          {
             title: "Template",
-            content: "Description and usage of Example 1.",
+            content: {
+              reference: {
+                // _params
+                path: "mob.near/widget/WidgetSource",
+                initialProps: {
+                  src: "devs.near/widget/Template",
+                },
+              },
+              adapter: "${config_account}/widget/PR.adapter.socialdb",
+            },
+          },
+          {
+            title: "Feed",
+            content: {
+              reference: {
+                // _params
+                path: "devs.near/widget/Feed.demo",
+              },
+              adapter: "${config_account}/widget/PR.adapter.socialdb",
+            },
           },
         ],
       },
@@ -122,24 +174,33 @@ documentation.sections.forEach((section) => {
   });
 });
 
+// hyperfile.near/widget/view
+
+// validate // derived from type
+// transform // default
+// adapter // override
+
+function transform(reference) {
+  let path = reference.path;
+
+  let parts = path.split("/");
+
+  if (parts.length === 1) {
+    parts.push("index");
+    path = parts.join("/");
+  }
+  return path + ".md";
+}
+
 return {
-  get: (params) => {
-    if (params) {
-      let path = params.path;
-
-      let parts = path.split("/");
-
-      if (parts.length === 1) {
-        parts.push("index");
-        path = parts.join("/");
-      }
-
-      return github.get(path + ".md");
+  get: (reference) => {
+    if (reference) {
+      return adapter.get(transform(reference));
     }
 
     return contentMap; // index
   },
   create: (k, v) => {
-    console.log("create");
+    return adapter.create(transform(k), v);
   },
 };
