@@ -1,4 +1,4 @@
-const { MarkdownViewer } = VM.require("${alias_devs}/widget/markdown.view") || {
+const { MarkdownViewer } = VM.require("${config_account}/widget/MarkdownView") || {
   MarkdownViewer: () => null,
 };
 
@@ -9,16 +9,27 @@ const PageContainer = styled.div`
 `;
 
 const Header = styled.div`
-  background-color: #333;
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  border-bottom: 1px solid var(--stroke-color, rgba(154, 127, 127, 0.2));
+  background: var(--bg-1, #fff);
+  width: 100%;
+  display: flex;
+  padding: 24px 12px;
+  gap: 16px;
+  margin-bottom: 1rem;
+  div {
+    display: flex;
+    gap: 1rem;
+  }
 `;
 
 const EditorWrapper = styled.div`
   flex: 1;
-  padding: 96px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 24px 12px;
 `;
 
 const EditorTextarea = styled.textarea`
@@ -35,8 +46,6 @@ const PreviewContent = styled.div`
   font-size: 16px;
 `;
 
-const Select = styled.select``;
-
 const Option = styled.option``;
 
 const Label = styled.label`
@@ -44,8 +53,22 @@ const Label = styled.label`
 `;
 
 const Button = styled.button`
-  // this could take in theme
-  padding: 10px 20px;
+  display: inline-flex;
+  padding: 9px 16px 9px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  background: var(--Colors-Grey-SystemWhite, #fff);
+
+  &:hover {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.22) inset,
+      0px -1px 0px 0px rgba(15, 15, 15, 0.15) inset, 0px 1px 2px -0.5px rgba(5, 5, 5, 0.08);
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 const ModalBox = styled.div`
@@ -143,13 +166,21 @@ const types = [
 ];
 
 const DefaultEditor = ({ value, onChange, onBlur }) => (
-  <EditorTextarea
+  <textarea
+    style={{ height: "100%" }}
+    className="form-control"
     placeholder="Start typing..."
     value={value}
     onChange={onChange}
     onBlur={onBlur}
   />
 );
+
+const PostModal = styled.div`
+  div {
+    display: grid;
+  }
+`;
 
 return (
   <PageContainer>
@@ -162,7 +193,7 @@ return (
         )}
         <Button onClick={handleToggleViewMode}>Toggle View Mode</Button>
       </div>
-      <div>
+      <PostModal>
         <Widget
           src="nui.sking.near/widget/Layout.Modal"
           props={{
@@ -177,7 +208,7 @@ return (
               <Button className="classic" disabled={!content}>
                 <>
                   <i className={"bi bi-save"} />
-                  save
+                  Save
                 </>
               </Button>
             ),
@@ -221,7 +252,7 @@ return (
               <Button className="classic" disabled={!path}>
                 <>
                   <i className={"bi bi-send"} />
-                  post
+                  Post
                 </>
               </Button>
             ),
@@ -247,51 +278,60 @@ return (
             ),
           }}
         />
-      </div>
+      </PostModal>
     </Header>
-    <div>
-      <Label>type:</Label>
-      <Select
-        onChange={(e) => {
-          set("type", e.target.value);
-          setType(e.target.value);
-        }}
-      >
-        {types &&
-          types.map((it) => (
-            <Option value={it.value} selected={it.value === type}>
-              {it.label}
-            </Option>
-          ))}
-      </Select>
-      <Label>editor:</Label>
-      <Select
-        onChange={(e) => {
-          set("editor", e.target.value);
-          setEditor(e.target.value);
-        }}
-      >
-        {editors &&
-          editors.map((it) => (
-            <Option value={it.value} selected={it.value === editor}>
-              {it.label}
-            </Option>
-          ))}
-      </Select>
-      <Label>language:</Label>
-      <Select
-        onChange={(e) => {
-          set("language", e.target.value);
-          setLanguage(e.target.value);
-        }}
-      >
-        {languages &&
-          languages.map((it) => (
-            <Option value={it.value} selected={it.value === language}>
-              {it.label}
-            </Option>
-          ))}
-      </Select>
+    <div className="row " style={{ marginLeft: "0px", marginRight: "0" }}>
+      <div class="col-12 col-md-4 form-group">
+        <label>Type</label>
+        <select
+          class="form-select"
+          onChange={(e) => {
+            set("type", e.target.value);
+            setType(e.target.value);
+          }}
+        >
+          {types &&
+            types.map((it) => (
+              <Option value={it.value} selected={it.value === type}>
+                {it.label}
+              </Option>
+            ))}
+        </select>
+      </div>
+      <div class="col-12 col-md-4 form-group">
+        <label>Editor</label>
+        <select
+          class="form-select"
+          onChange={(e) => {
+            set("editor", e.target.value);
+            setEditor(e.target.value);
+          }}
+        >
+          {editors &&
+            editors.map((it) => (
+              <Option value={it.value} selected={it.value === editor}>
+                {it.label}
+              </Option>
+            ))}
+        </select>
+      </div>
+      <div class="col-12 col-md-4 form-group">
+        <label>Language</label>
+        <select
+          class="form-select"
+          onChange={(e) => {
+            set("language", e.target.value);
+            setLanguage(e.target.value);
+          }}
+        >
+          {languages &&
+            languages.map((it) => (
+              <Option value={it.value} selected={it.value === language}>
+                {it.label}
+              </Option>
+            ))}
+        </select>
+      </div>
     </div>
     {viewMode === "single" ? (
       <EditorWrapper key={editor}>

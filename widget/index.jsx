@@ -13,11 +13,13 @@
  */
 
 const config = {
+  docName: "BOS Workspace Docs",
   theme: {
     "--main-color": "white",
     "--secondary-color": "black",
     background: "var(--main-color)",
     color: "var(--secondary-color)",
+    "--active-link-color": "rgb(46, 133, 85)",
   },
   layout: {
     src: "${alias_devs}/widget/Layout",
@@ -35,6 +37,7 @@ const config = {
           routes: config.router.routes,
           basePath: "${config_account}/widget/index",
           param: "page",
+          docName: config.docName,
           ...props,
         }}
       />
@@ -224,13 +227,156 @@ const CSS = styled.div`
   .link:hover {
     text-decoration: underline;
   }
+  .sidebar {
+    width: 300px;
+    height: 100vh;
+    padding: 8px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    .parent-section,
+    .child-section {
+      a {
+        text-decoration: none;
+        width: 100%;
+      }
+      button {
+        all: unset;
+        width: 100%;
+        padding: 6px 12px;
+        background: transparent;
+        color: black !important;
+        font-weight: 500;
+        box-sizing: border-box;
+        border-radius: 8px;
+        &:hover {
+          text-decoration: none;
+          background: rgba(0, 0, 0, 0.05);
+        }
+      }
 
+      .active {
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--active-link-color, rgb(46, 133, 85)) !important;
+      }
+    }
+    .nested-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  .sidebar-mobile {
+    width: 100%;
+    .parent-section,
+    .child-section {
+      a {
+        text-decoration: none;
+        width: 100%;
+      }
+      button {
+        all: unset;
+        width: 100%;
+        padding: 6px 12px;
+        background: transparent;
+        color: black !important;
+        font-weight: 500;
+        box-sizing: border-box;
+        border-radius: 8px;
+        &:hover {
+          text-decoration: none;
+          background: rgba(0, 0, 0, 0.05);
+        }
+      }
+
+      .active {
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--active-link-color, rgb(46, 133, 85)) !important;
+      }
+    }
+    .nested-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  .header {
+    background: white;
+    display: flex;
+    padding: 0.5rem 1rem;
+    padding-bottom: 0.5rem;
+    border: none;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    .icon {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.125rem 0.5rem;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 100%;
+      }
+
+      @media (max-width: 900px) {
+        font-size: 16px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    svg {
+      height: 32px;
+
+      @media (max-width: 900px) {
+        height: 26px;
+      }
+    }
+
+    a {
+      @media (max-width: 900px) {
+        font-size: 14px;
+      }
+    }
+  }
   .content {
     flex: 1;
     padding: 48px 96px;
     margin: 20px auto;
     height: 100%;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 900px) {
+      padding: 1rem;
+    }
+
+    h2,
+    h3 {
+      margin-top: 1rem;
+    }
+
+    pre {
+      padding: 0;
+      div {
+        margin: 0 !important;
+        border-radius: 6px !important;
+      }
+    }
   }
 `;
 

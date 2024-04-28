@@ -1,4 +1,4 @@
-const { MarkdownViewer } = VM.require("${alias_devs}/widget/markdown.view") || {
+const { MarkdownViewer } = VM.require("docs.bos-workspace.near/widget/MarkdownView") || {
   MarkdownViewer: () => null,
 };
 
@@ -143,12 +143,7 @@ const types = [
 ];
 
 const DefaultEditor = ({ value, onChange, onBlur }) => (
-  <EditorTextarea
-    placeholder="Start typing..."
-    value={value}
-    onChange={onChange}
-    onBlur={onBlur}
-  />
+  <EditorTextarea placeholder="Start typing..." value={value} onChange={onChange} onBlur={onBlur} />
 );
 
 return (

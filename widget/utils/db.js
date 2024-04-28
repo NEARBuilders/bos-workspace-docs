@@ -29,7 +29,9 @@ const normalize = (text, delimiter) => {
   );
 };
 
-let github = VM.require("${config_account}/widget/PR.adapter.github");
+let github = VM.require("${config_account}/widget/PR.adapter.github") || {
+  github: () => {},
+};
 
 const data = {
   "": JSON.stringify({
@@ -83,9 +85,7 @@ const data = {
       },
       {
         title: "Blocks",
-        content: {
-
-        },
+        content: {},
         subsections: [
           {
             title: "Template",

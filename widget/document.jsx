@@ -2,9 +2,15 @@ const { basePath, param, _params } = props;
 
 let adapter = "${config_account}/widget/utils.db"; // this could come from props
 
-const Template = VM.require("${config_account}/widget/PR.Template");
+const Template = VM.require("${config_account}/widget/PR.Template") || {
+  Template: () => <></>,
+};
 
-const { get } = VM.require(adapter);
+console.log("PARAMS", _params);
+
+const { get } = VM.require(adapter) || {
+  get: () => {},
+};
 
 const data = get(_params);
 
@@ -13,7 +19,9 @@ if (!data) {
   return <p>Page not found</p>;
 }
 
-const { MarkdownViewer } = VM.require("${alias_devs}/widget/markdown.view");
+const { MarkdownViewer } = VM.require("${config_account}/widget/MarkdownView") || {
+  MarkdownViewer: () => null,
+};
 
 return (
   <Template theme={{ "--main-bg-color": "white" }} style={{}}>

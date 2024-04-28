@@ -1,4 +1,28 @@
-const { basePath, param, page } = props;
+const { basePath, param, page, docName } = props;
+
+const { get } = VM.require("${config_account}/widget/utils.db") || {
+  get: () => {},
+};
+
+const documents = get();
+
+// Preprocess documents to group paths by their parent sections
+const groupedSections = {};
+Object.keys(documents).forEach((path) => {
+  const parts = path.split("/");
+  const parentSection = parts[0];
+  const childSection = parts.length > 1 ? parts[1] : null;
+
+  if (!groupedSections[parentSection]) {
+    groupedSections[parentSection] = [];
+  }
+
+  // Ensure child section is only added once per parent section
+  if (childSection && !groupedSections[parentSection].includes(childSection)) {
+    groupedSections[parentSection].push(childSection);
+  }
+});
+
 const NearIcon = () => {
   return (
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1656 567">
@@ -13,60 +37,91 @@ const NearIcon = () => {
   );
 };
 
-const Header = styled.div`
-  background: white;
-  display: flex;
-  padding: 0.5rem 1rem;
-  padding-bottom: 0.5rem;
-
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-
-  .icon {
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.125rem 0.5rem;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 100%;
-    }
-  }
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
-`;
-
-const HeaderContent = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  justify-content: flex-start;
-  svg {
-    height: 32px;
+const Button = styled.div`
+  font-size: 18px;
+  display: none;
+  @media (max-width: 900px) {
+    display: block;
   }
 `;
 
 return (
-  <Header>
-    <HeaderContent>
-      <a href="https://near.org/" target="_blank">
-        <NearIcon />
-      </a>
-      <a href="everything.dev" className="fw-bold">
-        BOS Workspace Docs
-      </a>
-    </HeaderContent>
-    <Link
-      to={props[param] === "settings" ? `/${basePath}` : `/${basePath}?${param}=settings`}
-      className="icon text-black"
+  <>
+    <div className="header">
+      <div className="header-content">
+        <Button
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample"
+        >
+          <i className="text-black bi bi-list"></i>
+        </Button>
+        <a href="https://near.org/" target="_blank">
+          <NearIcon />
+        </a>
+        <a href="everything.dev" className="fw-bold">
+          {docName ? docName : "BOS Workspace Docs"}
+        </a>
+      </div>
+      <Link
+        to={props[param] === "settings" ? `/${basePath}` : `/${basePath}?${param}=settings`}
+        className="icon text-black"
+      >
+        <i className="bi bi-gear"></i>
+      </Link>
+    </div>
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
     >
-      <i className="bi bi-gear"></i>
-    </Link>
-  </Header>
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+          Offcanvas
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="sidebar-mobile text-black">
+          {Object.keys(groupedSections).map((parentSection) => (
+            <div className="parent-section" key={parentSection}>
+              {/* Render parent section */}
+              <div className="parent-section">
+                <Link to={`/${basePath}?${param}=${parentSection}`}>
+                  {/* <button>{documents[parentSection].title}</button> */}
+                  <button className={props.page === parentSection ? "active" : ""}>
+                    {documents[parentSection].title}
+                  </button>
+                </Link>
+              </div>
+
+              {/* Render child sections */}
+              <div className="nested-section">
+                {groupedSections[parentSection].map((childSection) => (
+                  <div className="child-section" key={childSection}>
+                    <Link to={`/${basePath}?${param}=${parentSection}/${childSection}`}>
+                      <button
+                        className={
+                          props.page === `${parentSection}/${childSection}` ? "active" : ""
+                        }
+                      >
+                        {documents[`${parentSection}/${childSection}`].title}
+                      </button>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </>
 );

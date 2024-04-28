@@ -1,6 +1,8 @@
 const { basePath, param } = props;
 
-const { get } = VM.require("${config_account}/widget/utils.db");
+const { get } = VM.require("${config_account}/widget/utils.db") || {
+  get: () => {},
+};
 
 const documents = get();
 
@@ -21,48 +23,12 @@ Object.keys(documents).forEach((path) => {
   }
 });
 
-const Sidebar = styled.div`
-  width: 300px;
-  height: 100vh;
-  padding: 8px;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  .parent-section,
-  .child-section {
-    a {
-      text-decoration: none;
-      width: 100%;
-    }
-    button {
-      all: unset;
-      width: 100%;
-      padding: 6px 12px;
-      background: transparent;
-      color: black !important;
-      font-weight: 500;
-      box-sizing: border-box;
-      border-radius: 8px;
-      &:hover {
-        text-decoration: none;
-        background: rgba(0, 0, 0, 0.05);
-      }
-    }
-
-    .active {
-      background: rgba(0, 0, 0, 0.05);
-      color: #2e8555 !important;
-    }
-  }
-  .nested-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-`;
+const Sidebar = styled.div``;
 
 console.log(documents);
 
 return (
-  <Sidebar>
+  <Sidebar className="sidebar">
     {Object.keys(groupedSections).map((parentSection) => (
       <div className="parent-section" key={parentSection}>
         {/* Render parent section */}

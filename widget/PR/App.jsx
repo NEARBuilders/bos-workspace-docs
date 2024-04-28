@@ -1,4 +1,6 @@
-const { Router } = VM.require("${config_account}/widget/PR.Router");
+const { Router } = VM.require("${config_account}/widget/PR.Router") || {
+  Router: () => <></>,
+};
 
 const { config, ...passProps } = props;
 
@@ -34,7 +36,9 @@ if (!config) {
   return <p>unable to load config: {typeof config === object ? JSON.stringify(config) : config}</p>;
 }
 
-const Template = VM.require("${config_account}/widget/PR.Template");
+const Template = VM.require("${config_account}/widget/PR.Template") || {
+  Template: () => <></>,
+};
 
 return (
   <Template
