@@ -45,9 +45,31 @@ const Button = styled.div`
   }
 `;
 
+const DesktopLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
+const MobileLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+  a {
+    color: black !important;
+    text-decoration: none;
+  }
+
+  margin-bottom: 1rem;
+`;
+
 return (
   <>
-    <div className="header">
+    <div className="header  text-black">
       <div className="header-content">
         <Button
           type="button"
@@ -63,6 +85,14 @@ return (
         <a href="everything.dev" className="fw-bold">
           {docName ? docName : "BOS Workspace Docs"}
         </a>
+        <DesktopLinks>
+          {props.headerRoutes.length > 0 &&
+            props.headerRoutes.map((item) => (
+              <a href={item.path} target="/blank">
+                {item.label}
+              </a>
+            ))}
+        </DesktopLinks>
       </div>
       <Link
         to={props[param] === "settings" ? `/${basePath}` : `/${basePath}?${param}=settings`}
@@ -72,54 +102,66 @@ return (
       </Link>
     </div>
     <div
-      class="offcanvas offcanvas-start"
+      className="offcanvas offcanvas-start"
       tabindex="-1"
       id="offcanvasExample"
       aria-labelledby="offcanvasExampleLabel"
     >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-          Offcanvas
-        </h5>
+      <div className="offcanvas-header">
+        <h4 className="offcanvas-title fw-bolder" id="offcanvasExampleLabel">
+          Menu
+        </h4>
         <button
           type="button"
-          class="btn-close text-reset"
+          className="btn-close text-reset me-1"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
         ></button>
       </div>
-      <div class="offcanvas-body">
-        <div class="sidebar-mobile text-black">
-          {Object.keys(groupedSections).map((parentSection) => (
-            <div className="parent-section" key={parentSection}>
-              {/* Render parent section */}
-              <div className="parent-section">
-                <Link to={`/${basePath}?${param}=${parentSection}`}>
-                  {/* <button>{documents[parentSection].title}</button> */}
-                  <button className={props.page === parentSection ? "active" : ""}>
-                    {documents[parentSection].title}
-                  </button>
-                </Link>
-              </div>
+      <div className="offcanvas-body">
+        <div className="sidebar-mobile text-black">
+          <MobileLinks>
+            <h5 className="fw-bold">Resources</h5>
+            {props.headerRoutes.length > 0 &&
+              props.headerRoutes.map((item) => (
+                <a href={item.path} target="/blank">
+                  {item.label}
+                </a>
+              ))}
+          </MobileLinks>
+          <div>
+            <h5 className="fw-bold">Pages</h5>
+            {Object.keys(groupedSections).map((parentSection) => (
+              <div className="parent-section" key={parentSection}>
+                {/* Render parent section */}
+                <div className="parent-section">
+                  <Link to={`/${basePath}?${param}=${parentSection}`}>
+                    {/* <button>{documents[parentSection].title}</button> */}
+                    <button className={props.page === parentSection ? "active" : ""}>
+                      {documents[parentSection].title}
+                    </button>
+                  </Link>
+                </div>
 
-              {/* Render child sections */}
-              <div className="nested-section">
-                {groupedSections[parentSection].map((childSection) => (
-                  <div className="child-section" key={childSection}>
-                    <Link to={`/${basePath}?${param}=${parentSection}/${childSection}`}>
-                      <button
-                        className={
-                          props.page === `${parentSection}/${childSection}` ? "active" : ""
-                        }
-                      >
-                        {documents[`${parentSection}/${childSection}`].title}
-                      </button>
-                    </Link>
-                  </div>
-                ))}
+                {/* Render child sections */}
+                <div className="nested-section">
+                  {groupedSections[parentSection].map((childSection) => (
+                    <div className="child-section" key={childSection}>
+                      <Link to={`/${basePath}?${param}=${parentSection}/${childSection}`}>
+                        <button
+                          className={
+                            props.page === `${parentSection}/${childSection}` ? "active" : ""
+                          }
+                        >
+                          {documents[`${parentSection}/${childSection}`].title}
+                        </button>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

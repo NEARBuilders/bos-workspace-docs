@@ -38,6 +38,7 @@ const config = {
           basePath: "${config_account}/widget/index",
           param: "page",
           docName: config.docName,
+          headerRoutes: config.headerRoutes.routes,
           ...props,
         }}
       />
@@ -54,6 +55,22 @@ const config = {
         }}
       />
     ),
+  },
+  headerRoutes: {
+    routes: [
+      {
+        path: "https://near.org",
+        label: "near.org",
+      },
+      {
+        path: "https://near.org",
+        label: "near.org",
+      },
+      {
+        path: "https://near.org",
+        label: "near.org",
+      },
+    ],
   },
   router: {
     param: "page",
