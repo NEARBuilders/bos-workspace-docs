@@ -30,9 +30,7 @@ const Embedded = styled.span`
 `;
 function MarkdownViewer(props) {
   const onLink = (props) => {
-    console.log("onLink", props);
     if (props.children[0] === "EMBED") {
-      // EMBED
       return <Widget src="mob.near/widget/N.Embed" loading="" props={props} />;
     } else {
       return <a {...props} />;
@@ -54,7 +52,6 @@ function MarkdownViewer(props) {
     ));
   return (
     <Wrapper>
-      {/* <Markdown text={props.value} onMention={renderMention} /> */}
       <Widget
         key="content"
         loading={<div className="w-100" style={{ height: "100px" }} />}

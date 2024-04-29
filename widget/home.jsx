@@ -2,7 +2,7 @@ const LandingPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   margin: 2rem;
 `;
 

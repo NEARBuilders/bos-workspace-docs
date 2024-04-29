@@ -6,8 +6,6 @@ const Template = VM.require("${config_account}/widget/PR.Template") || {
   Template: () => <></>,
 };
 
-console.log("PARAMS", _params);
-
 const { get } = VM.require(adapter) || {
   get: () => {},
 };

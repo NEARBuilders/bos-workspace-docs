@@ -1,4 +1,4 @@
-const { MarkdownViewer } = VM.require("docs.bos-workspace.near/widget/MarkdownView") || {
+const { MarkdownViewer } = VM.require("${config_account}/widget/MarkdownView") || {
   MarkdownViewer: () => null,
 };
 

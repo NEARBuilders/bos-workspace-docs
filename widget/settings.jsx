@@ -46,8 +46,6 @@ const PreviewContent = styled.div`
   font-size: 16px;
 `;
 
-const Option = styled.option``;
-
 const Label = styled.label`
   margin-right: 10px;
 `;
@@ -292,9 +290,9 @@ return (
         >
           {types &&
             types.map((it) => (
-              <Option value={it.value} selected={it.value === type}>
+              <option value={it.value} selected={it.value === type}>
                 {it.label}
-              </Option>
+              </option>
             ))}
         </select>
       </div>
@@ -309,9 +307,9 @@ return (
         >
           {editors &&
             editors.map((it) => (
-              <Option value={it.value} selected={it.value === editor}>
+              <option value={it.value} selected={it.value === editor}>
                 {it.label}
-              </Option>
+              </option>
             ))}
         </select>
       </div>
@@ -326,9 +324,9 @@ return (
         >
           {languages &&
             languages.map((it) => (
-              <Option value={it.value} selected={it.value === language}>
+              <option value={it.value} selected={it.value === language}>
                 {it.label}
-              </Option>
+              </option>
             ))}
         </select>
       </div>

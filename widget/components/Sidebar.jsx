@@ -25,8 +25,6 @@ Object.keys(documents).forEach((path) => {
 
 const Sidebar = styled.div``;
 
-console.log(documents);
-
 return (
   <Sidebar className="sidebar">
     {Object.keys(groupedSections).map((parentSection) => (
