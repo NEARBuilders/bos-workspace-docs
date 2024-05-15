@@ -1,6 +1,6 @@
-# Migration Guide
+## Migration Guide
 
-## 0.0.1-alpha.x to 1.0.0
+### 0.0.1-alpha.x to 1.0.0
 
 This upgrade introduces some name changes, a new replacements strategy, and a more modular approach with apps and workspaces.
 
@@ -8,7 +8,7 @@ To use the latest version, you may maintain your current app's structure, but mu
 
 1. In every app's `bos.config.json`, rename "appAccount" to "account"
 2. Any widget utilizing replacements with `/*__@appAccount__*/` should replace with `${config_account}`. Aliases should be replaced with `${alias_ALIASKEY}`.
-3. 
+3.
 
 ### `bos.config.json`
 

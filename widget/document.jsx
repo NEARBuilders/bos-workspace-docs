@@ -22,7 +22,7 @@ const { MarkdownViewer } = VM.require("${config_account}/widget/MarkdownView") |
 };
 
 return (
-  <Template theme={{ "--main-bg-color": "white" }} style={{}}>
+  <Template theme={{ "--main-bg-color": "black" }} style={{}}>
     <div
       style={{ backgroundColor: "var(--main-bg-color)", width: "100%", height: "100%" }}
       className="content"

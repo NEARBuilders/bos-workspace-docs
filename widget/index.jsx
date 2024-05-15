@@ -15,7 +15,7 @@
 const config = {
   docName: "BOS Workspace Docs",
   theme: {
-    "--main-color": "white",
+    "--main-color": "black",
     "--secondary-color": "black",
     background: "var(--main-color)",
     color: "var(--secondary-color)",
@@ -107,7 +107,7 @@ const config = {
 };
 
 const InterCSS = fetch(
-  `https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet`
+  `"https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"`
 ).body;
 
 const CSS = styled.div`
@@ -116,46 +116,45 @@ const CSS = styled.div`
   * {
     box-sizing: border-box;
     font-weight: 400;
-    font-family: Inter, sans-serif;
+    font-family: Poppins, sans-serif;
+    background: #000;
   }
 
-  .window {
+  /* .window {
     /* -webkit-font-smoothing: none; */
-    letter-spacing: 0.025em;
+  letter-spacing: 0.025em;
 
-    background-color: #fff;
-    height: 100vh;
-    width: 100% !important;
+  background-color: #fff;
+  height: 100vh;
+  width: 100% !important;
 
-    border-radius: 5px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+  border-radius: 5px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 
-  .sidebar {
+  /* .sidebar {
     padding: 20px;
     width: 250px;
-  }
+  } */
 
-  .nested-section {
+  /* .nested-section {
     margin-bottom: 10px;
   }
 
   .parent-section {
     margin-bottom: 5px;
-  }
+  } */
 
-  .child-section {
-    margin-left: 20px; /* Adjust as needed for indentation */
-  }
+  /* .child-section {
+    margin-left: 20px; 
+  } */
 
-  .button {
+  /* .button {
     display: block;
     width: 100%;
     padding: 8px;
     margin: 0;
     border: none;
-    /* background-color: transparent; */
     text-align: left;
 
     -moz-appearance: none;
@@ -181,14 +180,14 @@ const CSS = styled.div`
   .separator {
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
-  }
+  } */
 
   .link {
     text-decoration: "none";
     color: inherit;
   }
 
-  .header {
+  /* .header {
     width: 100%;
     position: relative;
     color: #fff;
@@ -221,10 +220,10 @@ const CSS = styled.div`
     .end {
       margin-left: auto;
     }
-  }
+  } */
 
-  .left-branding {
-    margin-right: auto; /* Pushes the branding to the left */
+  /* .left-branding {
+    margin-right: auto; 
   }
 
   .routes {
@@ -233,7 +232,7 @@ const CSS = styled.div`
   }
 
   .settings {
-    margin-left: auto; /* Pushes the settings to the right */
+    margin-left: auto; 
   }
 
   .link {
@@ -243,42 +242,82 @@ const CSS = styled.div`
 
   .link:hover {
     text-decoration: underline;
-  }
+  } */
   .sidebar {
-    width: 300px;
+    display: flex;
+    width: 259px;
     height: 100vh;
-    padding: 8px;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
-    .parent-section,
+    padding: 24px 12px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    border-radius: var(--_16, 16px);
+    border: 1px solid var(--23242-b, #23242b);
+    background: #000;
+
     .child-section {
+      display: flex;
+      padding: 10px 12px;
+      align-items: center;
+      gap: 12px;
+      align-self: stretch;
+
+      a {
+        text-decoration: none !important;
+        width: 100%;
+        color: #fff;
+      }
+
+      .active-child {
+        border-radius: 6px !important;
+        background: rgba(236, 162, 39, 0.2) !important;
+      }
+    }
+
+    .parent-section {
       a {
         text-decoration: none;
         width: 100%;
       }
-      button {
+
+      Button {
+        display: flex;
+        width: 232px;
+        height: 40px;
+        padding: 10px 12px;
+        align-items: center;
+        gap: 12px;
+        box-sizing: border-box;
+      }
+      /* button {
         all: unset;
         width: 100%;
         padding: 6px 12px;
         background: transparent;
-        color: black !important;
+        color: white !important;
         font-weight: 500;
         box-sizing: border-box;
         border-radius: 8px;
         &:hover {
           text-decoration: none;
-          background: rgba(0, 0, 0, 0.05);
+
         }
-      }
+      } */
 
       .active {
-        background: rgba(0, 0, 0, 0.05);
-        color: var(--active-link-color, rgb(46, 133, 85)) !important;
+        background: var(--eca-227, #eca227);
+        color: #000 !important;
       }
     }
     .nested-section {
+      margin-top: 0.25rem;
       display: flex;
       flex-direction: column;
+      align-items: flex-end;
       gap: 0.25rem;
+      border-left: 2px solid #c4a6a633;
+      margin-left: 3rem;
     }
 
     @media (max-width: 900px) {
@@ -322,14 +361,11 @@ const CSS = styled.div`
   }
 
   .header {
-    background: white;
-    display: flex;
-    padding: 0.5rem 1rem;
+    background: #000;
+    padding: 24px 48px;
     padding-bottom: 0.5rem;
     border: none;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #c4a6a633;
 
     .icon {
       font-size: 24px;
@@ -350,16 +386,17 @@ const CSS = styled.div`
 
     a {
       text-decoration: none;
-      color: black;
+      color: #fff;
     }
   }
   .header-content {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    justify-content: flex-start;
+    gap: 40px;
+    justify-content: space-between;
     svg {
       height: 32px;
+      fill: #fff;
 
       @media (max-width: 900px) {
         height: 26px;
@@ -377,14 +414,29 @@ const CSS = styled.div`
     padding: 48px 96px;
     margin: 20px auto;
     height: 100%;
+    color: white;
 
     @media (max-width: 900px) {
       padding: 1rem;
     }
 
-    h2,
+    h2 {
+      color: var(--FFFFFF, #fff);
+      font-family: Poppins;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%; /* 48px */
+      letter-spacing: -1.6px;
+    }
     h3 {
-      margin-top: 1rem;
+      color: #fff;
+      font-family: Poppins;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 120%; /* 33.6px */
+      letter-spacing: -1.12px;
     }
 
     pre {

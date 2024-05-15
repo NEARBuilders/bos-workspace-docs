@@ -7,6 +7,10 @@ const { NearIcon } = VM.require("${config_account}/widget/components.NearIcon") 
   NearIcon: () => <></>,
 };
 
+const { SidebarLayout } = VM.require("buildhub.near/widget/template.SidebarLayout") || {
+  SidebarLayout: () => <></>,
+};
+
 const documents = get();
 
 // Preprocess documents to group paths by their parent sections
@@ -36,8 +40,9 @@ const Button = styled.div`
 
 const DesktopLinks = styled.div`
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 24px;
+  flex: 1 0 0;
   @media (max-width: 900px) {
     display: none;
   }
@@ -60,35 +65,55 @@ return (
   <>
     <div className="header  text-black">
       <div className="header-content">
-        <Button
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasExample"
-          aria-controls="offcanvasExample"
+        <div
+          style={{
+            display: "flex",
+            gap: "40px",
+          }}
         >
-          <i className="text-black bi bi-list"></i>
-        </Button>
-        <a href="https://near.org/" target="_blank">
-          <NearIcon />
-        </a>
-        <a href="everything.dev" className="fw-bold">
-          {docName ? docName : "BOS Workspace Docs"}
-        </a>
-        <DesktopLinks>
-          {props.headerRoutes.length > 0 &&
-            props.headerRoutes.map((item) => (
-              <a href={item.path} target="/blank">
-                {item.label}
-              </a>
-            ))}
-        </DesktopLinks>
+          <div>
+            <Button
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+            >
+              <i className="text-black bi bi-list"></i>
+            </Button>
+            <a href="https://near.org/" target="_blank">
+              <NearIcon />
+            </a>
+          </div>
+          <div>
+            <a href="" className="fw-bold">
+              {docName ? docName : "BOS Workspace Docs"}
+            </a>
+          </div>
+          <div>
+            <DesktopLinks>
+              {props.headerRoutes.length > 0 &&
+                props.headerRoutes.map((item) => (
+                  <a href={item.path} target="/blank">
+                    {item.label}
+                  </a>
+                ))}
+            </DesktopLinks>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+          }}
+        >
+          <Link
+            to={props[param] === "settings" ? `/${basePath}` : `/${basePath}?${param}=settings`}
+            className="icon text-white"
+          >
+            <i className="bi bi-gear"></i>
+          </Link>
+        </div>
       </div>
-      <Link
-        to={props[param] === "settings" ? `/${basePath}` : `/${basePath}?${param}=settings`}
-        className="icon text-black"
-      >
-        <i className="bi bi-gear"></i>
-      </Link>
     </div>
     <div
       className="offcanvas offcanvas-start"

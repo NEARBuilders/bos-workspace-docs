@@ -2,37 +2,55 @@ const LandingPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   margin: 2rem;
 `;
 
 const Title = styled.h1`
-  font-size: 30px;
-  font-family: Inter;
-  color: #333;
-  margin: 1rem;
+  color: var(--FFFFFF, #fff);
+  font-family: Poppins;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 48px */
+  letter-spacing: -1.6px;
+  align-self: stretch;
+  margin-bottom: 32px;
 `;
 
-const Button = styled.button`
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  background-color: #007bff;
+const SubTitle = styled.h1`
   color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3;
-  }
+  font-family: Poppins;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 33.6px */
+  letter-spacing: -1.12px;
+  margin-bottom: 24px;
 `;
+
+// const Button = styled.button`
+//   padding: 1rem 2rem;
+//   font-size: 1.2rem;
+//   background-color: #007bff;
+//   color: #fff;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
+
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;
 
 const BosWorkspaceInfo = styled.p`
-  font-size: 16px;
-  color: #444;
-  margin-left: 2rem;
-  margin-bottom: 0;
+  color: var(--E8E8E8, #e8e8e8);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 
 const CodeSnippet = styled.div`
@@ -56,7 +74,7 @@ return (
       management, it caters to developers looking for an efficient and scalable developer
       environment.
     </BosWorkspaceInfo>
-    <Title>Quickstart</Title>
+    <SubTitle>Quickstart</SubTitle>
     <BosWorkspaceInfo>
       To begin, either use this template repository or install bos-workspace within an existing
       project:

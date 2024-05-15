@@ -2,6 +2,10 @@ const { MarkdownViewer } = VM.require("${config_account}/widget/MarkdownView") |
   MarkdownViewer: () => null,
 };
 
+const { Button } = VM.require("buildhub.near/widget/components") || {
+  Button: () => <></>,
+};
+
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,7 +19,7 @@ const Header = styled.div`
   flex-wrap: wrap;
 
   border-bottom: 1px solid var(--stroke-color, rgba(154, 127, 127, 0.2));
-  background: var(--bg-1, #fff);
+  background: var(--bg-1, #000);
   width: 100%;
   display: flex;
   padding: 24px 12px;
@@ -50,24 +54,24 @@ const Label = styled.label`
   margin-right: 10px;
 `;
 
-const Button = styled.button`
-  display: inline-flex;
-  padding: 9px 16px 9px 12px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 6px;
-  border: 1px solid #dee2e6;
-  background: var(--Colors-Grey-SystemWhite, #fff);
+// const Button = styled.button`
+//   display: inline-flex;
+//   padding: 9px 16px 9px 12px;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 8px;
+//   border-radius: 6px;
+//   border: 1px solid #dee2e6;
+//   background: var(--Colors-Grey-SystemWhite, #fff);
 
-  &:hover {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.22) inset,
-      0px -1px 0px 0px rgba(15, 15, 15, 0.15) inset, 0px 1px 2px -0.5px rgba(5, 5, 5, 0.08);
-  }
-  &:disabled {
-    cursor: not-allowed;
-  }
-`;
+//   &:hover {
+//     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.22) inset,
+//       0px -1px 0px 0px rgba(15, 15, 15, 0.15) inset, 0px 1px 2px -0.5px rgba(5, 5, 5, 0.08);
+//   }
+//   &:disabled {
+//     cursor: not-allowed;
+//   }
+// `;
 
 const ModalBox = styled.div`
   background-color: white;
@@ -185,11 +189,13 @@ return (
     <Header>
       <div>
         {viewMode === "single" && (
-          <Button onClick={handleTogglePreview}>
+          <Button variant="outline" onClick={handleTogglePreview}>
             {showPreview ? "Hide Preview" : "Show Preview"}
           </Button>
         )}
-        <Button onClick={handleToggleViewMode}>Toggle View Mode</Button>
+        <Button variant="outline" onClick={handleToggleViewMode}>
+          Toggle View Mode
+        </Button>
       </div>
       <PostModal>
         <Widget
@@ -203,12 +209,20 @@ return (
               });
             },
             toggle: (
-              <Button className="classic" disabled={!content}>
+              <Button variant="primary" className="classic" disabled={!content}>
                 <>
                   <i className={"bi bi-save"} />
                   Save
                 </>
               </Button>
+
+              // <Widget
+              //   src="buildhub.near/widget/components.Button"
+              //   props={{
+              //     text: "Save",
+              //     variant: "primary",
+              //   }}
+              // />
             ),
             content: (
               <div className="w-100">
@@ -247,7 +261,7 @@ return (
               });
             },
             toggle: (
-              <Button className="classic" disabled={!path}>
+              <Button variant="outline" className="classic" disabled={!path}>
                 <>
                   <i className={"bi bi-send"} />
                   Post
