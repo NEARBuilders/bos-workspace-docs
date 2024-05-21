@@ -159,7 +159,7 @@ return (
       </div>
       <div>
         <Widget
-          src="nui.sking.near/widget/Layout.Modal"
+          src="${alias_nearui}/widget/Layout.Modal"
           props={{
             open: state.saveModalOpen,
             onOpenChange: (open) => {
@@ -203,7 +203,7 @@ return (
           }}
         />
         <Widget
-          src="nui.sking.near/widget/Layout.Modal"
+          src="${alias_nearui}/widget/Layout.Modal"
           props={{
             open: state.postModalOpen,
             onOpenChange: (open) => {

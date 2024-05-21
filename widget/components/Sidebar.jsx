@@ -4,7 +4,7 @@ const { get } = VM.require("${config_account}/widget/utils.db") || {
   get: () => {},
 };
 
-const { Button } = VM.require("buildhub.near/widget/components") || {
+const { Button } = VM.require("${alias_builddao}/widget/components") || {
   Button: () => <></>,
 };
 

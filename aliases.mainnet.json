@@ -1,4 +1,7 @@
 {
   "devs": "devs.near",
-  "create": "create.near"
+  "create": "create.near",
+  "builddao": "buildhub.near",
+  "mob": "mob.near",
+  "nearui": "nearui.near"
 }

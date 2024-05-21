@@ -2,7 +2,7 @@ const { MarkdownViewer } = VM.require("${config_account}/widget/MarkdownView") |
   MarkdownViewer: () => null,
 };
 
-const { Button } = VM.require("buildhub.near/widget/components") || {
+const { Button } = VM.require("${alias_builddao}/widget/components") || {
   Button: () => <></>,
 };
 
@@ -199,7 +199,7 @@ return (
       </div>
       <PostModal>
         <Widget
-          src="nui.sking.near/widget/Layout.Modal"
+          src="${alias_nearui}/widget/Layout.Modal"
           props={{
             open: state.saveModalOpen,
             onOpenChange: (open) => {
@@ -215,14 +215,6 @@ return (
                   Save
                 </>
               </Button>
-
-              // <Widget
-              //   src="buildhub.near/widget/components.Button"
-              //   props={{
-              //     text: "Save",
-              //     variant: "primary",
-              //   }}
-              // />
             ),
             content: (
               <div className="w-100">
@@ -251,7 +243,7 @@ return (
           }}
         />
         <Widget
-          src="nui.sking.near/widget/Layout.Modal"
+          src="${alias_nearui}/widget/Layout.Modal"
           props={{
             open: state.postModalOpen,
             onOpenChange: (open) => {

@@ -1,4 +1,7 @@
 {
   "devs": "neardevs.testnet",
-  "create": "todo.testnet"
+  "create": "todo.testnet",
+  "builddao": "builddao.testnet",
+  "mob": "mike.testnet",
+  "nearui": "mainnet-on.testnet"
 }

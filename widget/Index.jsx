@@ -13,7 +13,6 @@
  */
 
 const config = {
-  docName: "BOS Workspace Docs",
   theme: {
     "--main-color": "black",
     "--secondary-color": "black",
@@ -29,48 +28,31 @@ const config = {
   },
   blocks: {
     // these get passed to the layout and children
-    Header: () => (
+    Header: () => (<></>
       // customize your header
-      <Widget
-        src="${config_account}/widget/components.Header"
-        props={{
-          routes: config.router.routes,
-          basePath: "${config_account}/widget/index",
-          param: "page",
-          docName: config.docName,
-          headerRoutes: config.headerRoutes.routes,
-          ...props,
-        }}
-      />
+      // <Widget
+      //   src="${config_account}/widget/components.Header"
+      //   props={{
+      //     routes: config.router.routes,
+      //     basePath: "${config_account}/widget/index",
+      //     param: "page",
+      //     docName: config.docName,
+      //     headerRoutes: config.headerRoutes.routes,
+      //     ...props,
+      //   }}
+      // />
     ),
     Footer: () => <></>, // customize your footer
     Sidebar: () => (
       <Widget
         src="${config_account}/widget/components.Sidebar"
         props={{
-          routes: config.router.routes,
-          basePath: "${config_account}/widget/index",
+          basePath: "${config_account}/widget/Index",
           param: "page",
           ...props,
         }}
       />
     ),
-  },
-  headerRoutes: {
-    routes: [
-      {
-        path: "https://near.org",
-        label: "near.org",
-      },
-      {
-        path: "https://near.org",
-        label: "near.org",
-      },
-      {
-        path: "https://near.org",
-        label: "near.org",
-      },
-    ],
   },
   router: {
     param: "page",

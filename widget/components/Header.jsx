@@ -7,7 +7,7 @@ const { NearIcon } = VM.require("${config_account}/widget/components.NearIcon") 
   NearIcon: () => <></>,
 };
 
-const { SidebarLayout } = VM.require("buildhub.near/widget/template.SidebarLayout") || {
+const { SidebarLayout } = VM.require("${alias_builddao}/widget/template.SidebarLayout") || {
   SidebarLayout: () => <></>,
 };
 

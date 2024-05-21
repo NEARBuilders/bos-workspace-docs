@@ -31,7 +31,7 @@ const Embedded = styled.span`
 function MarkdownViewer(props) {
   const onLink = (props) => {
     if (props.children[0] === "EMBED") {
-      return <Widget src="mob.near/widget/N.Embed" loading="" props={props} />;
+      return <Widget src="${alias_mob}/widget/N.Embed" loading="" props={props} />;
     } else {
       return <a {...props} />;
     }
@@ -41,7 +41,7 @@ function MarkdownViewer(props) {
     ((accountId) => (
       <span key={accountId} className="d-inline-flex" style={{ fontWeight: 500 }}>
         <Widget
-          src="mob.near/widget/ProfileLine"
+          src="${alias_mob}/widget/ProfileLine"
           props={{
             accountId: accountId.toLowerCase(),
             hideAccountId: true,
@@ -55,7 +55,7 @@ function MarkdownViewer(props) {
       <Widget
         key="content"
         loading={<div className="w-100" style={{ height: "100px" }} />}
-        src="mob.near/widget/N.SocialMarkdown"
+        src="${alias_mob}/widget/N.SocialMarkdown"
         props={{
           text: props.value,
           onLink: onLink,
